@@ -8,6 +8,8 @@ var config = {
   };
   firebase.initializeApp(config);
 
+  var database = firebase.database();
+
 $('body').on('click', '#add-train', function(event) {
     event.preventDefault();
 
@@ -31,7 +33,7 @@ $('body').on('click', '#add-train', function(event) {
 
 });
 database.ref().on('child_added', function(childSnapshot) {
-    
+
     var name = childSnapshot.val().Name;
     var destination = childSnapshot.val().Destination;
     var first = childSnapshot.val().First;
